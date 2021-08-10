@@ -1,0 +1,14 @@
+{
+  "name": "com.omega.vrkeyboard",
+  "version": "1.0.0",
+  "displayName": "VR Keyboard",
+  "description": "Custom Keyboard",
+  "unity": "2019.1",
+  "unityRelease": "0b5",
+  "author": "Omega (https://github.com/ltd-profit/)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ltd-profit/toolbar-extender.git"
+  },
+  "hideInEditor": false
+}
