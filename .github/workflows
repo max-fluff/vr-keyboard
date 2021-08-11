@@ -1,0 +1,10 @@
+name: package-updater
+on: 
+  push:
+    branches:
+      - master
+jobs:
+  update-package:
+    runs-on: ubuntu-latest
+    steps:
+    - run: git subtree push --prefix Assets/VRKeyboard-package origin package
