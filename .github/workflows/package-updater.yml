@@ -7,4 +7,5 @@ jobs:
   update-package:
     runs-on: [self-hosted]
     steps:
+      - uses: actions/checkout@v2.1.0
       - run: git subtree push --prefix Assets/VRKeyboard-package origin upm
