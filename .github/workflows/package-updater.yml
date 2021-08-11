@@ -2,7 +2,7 @@ name: package-updater
 on: 
   push:
     branches:
-      - test
+      - master
 jobs:
   update-package:
     runs-on: ubuntu-latest
