@@ -22,6 +22,13 @@ namespace VRKeyboard
             var keysetPrefab = Resources.Load<LetterKeyset>("KeySetPrefab");
             var keysetInstance = Instantiate(keysetPrefab, backgroundGameObject.transform);
 
+            GenerateRows(keysetInstance);
+            
+            lettersKeysets.Add(keysetInstance);
+        }
+
+        private void GenerateRows(LetterKeyset keysetInstance)
+        {
             var rowPrefab = Resources.Load<GameObject>("RowPrefab");
 
             for (var i = 0; i < lettersRows.Length - 1; i++)
@@ -55,7 +62,6 @@ namespace VRKeyboard
             var enterButton = Instantiate(enterPrefab, lastRowInstance.transform);
 
             keysetInstance.SetUtilityButtons(enterButton, shiftButton, deleteButton, languageButton, symbolsButton);
-            lettersKeysets.Add(keysetInstance);
         }
     }
 }
