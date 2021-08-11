@@ -71,7 +71,8 @@ namespace OmegaVRKeyboard
             if (_inputField is null) return;
 
             var text = _inputField.text;
-            _inputField.text = text.Remove(text.Length - 1);
+            if(text.Length > 0)
+                _inputField.text = text.Remove(text.Length - 1);
         }
 
         public void Return()
