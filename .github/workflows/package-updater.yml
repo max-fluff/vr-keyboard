@@ -8,4 +8,4 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v2.1.0
-      - run: git subtree push -f --prefix Assets/VRKeyboard-package origin upm
+      - run: git subtree push --force --prefix Assets/VRKeyboard-package origin upm
