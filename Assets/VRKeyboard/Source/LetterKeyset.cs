@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace OmegaVRKeyboard
+namespace VRKeyboard
 {
     public class LetterKeyset : MonoBehaviour
     {

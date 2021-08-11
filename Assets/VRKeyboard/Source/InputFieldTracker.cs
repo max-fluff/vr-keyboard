@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace OmegaVRKeyboard
+namespace VRKeyboard
 {
     [RequireComponent(typeof(TMP_InputField))]
     public class InputFieldTracker : MonoBehaviour

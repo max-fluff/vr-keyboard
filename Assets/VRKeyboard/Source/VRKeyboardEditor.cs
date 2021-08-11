@@ -1,8 +1,7 @@
 ﻿#if UNITY_EDITOR
-using UnityEditor;
 using UnityEngine;
 
-namespace OmegaVRKeyboard
+namespace VRKeyboard
 {
     public partial class VRKeyboard
     {

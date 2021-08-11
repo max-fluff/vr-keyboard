@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace OmegaVRKeyboard
+namespace VRKeyboard
 {
     public class KeyboardUtilityButton : MonoBehaviour
     {

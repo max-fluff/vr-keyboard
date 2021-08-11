@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-namespace OmegaVRKeyboard
+namespace VRKeyboard
 {
     public partial class VRKeyboard : MonoBehaviour
     {
