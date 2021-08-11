@@ -2,22 +2,22 @@ using UnityEngine;
 
 namespace OmegaVRKeyboard
 {
-    public class VRLetterKeyset : MonoBehaviour
+    public class LetterKeyset : MonoBehaviour
     {
-        [SerializeField] private VRKeyboardButton shift;
-        [SerializeField] private VRKeyboardButton delete;
-        [SerializeField] private VRKeyboardButton switchLanguage;
-        [SerializeField] private VRKeyboardButton symbols;
-        [SerializeField] private VRKeyboardButton enter;
+        [SerializeField] private KeyboardUtilityButton shift;
+        [SerializeField] private KeyboardUtilityButton delete;
+        [SerializeField] private KeyboardUtilityButton switchLanguage;
+        [SerializeField] private KeyboardUtilityButton symbols;
+        [SerializeField] private KeyboardUtilityButton enter;
 
         private VRKeyboard _keyboard;
-        private VRKeyboardLetter[] _letters;
-        private bool _isUpperCase = true;
+        private KeyboardLetterButton[] _letters;
+        private bool _isUpperCase;
 
         private void Awake()
         {
             _keyboard = GetComponentInParent<VRKeyboard>();
-            _letters = GetComponentsInChildren<VRKeyboardLetter>();
+            _letters = GetComponentsInChildren<KeyboardLetterButton>();
 
             foreach (var letter in _letters)
             {
@@ -45,6 +45,20 @@ namespace OmegaVRKeyboard
                     letter.ToUpperCase();
                 _isUpperCase = true;
             }
+        }
+
+        public void SetUtilityButtons(
+            KeyboardUtilityButton enterButton,
+            KeyboardUtilityButton shiftButton,
+            KeyboardUtilityButton deleteButton,
+            KeyboardUtilityButton languageButton,
+            KeyboardUtilityButton symbolsButton)
+        {
+            enter = enterButton;
+            shift = shiftButton;
+            delete = deleteButton;
+            switchLanguage = languageButton;
+            symbols = symbolsButton;
         }
 
         private void OnDestroy()

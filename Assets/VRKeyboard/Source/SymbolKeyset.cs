@@ -3,18 +3,18 @@ using UnityEngine;
 
 namespace OmegaVRKeyboard
 {
-    public class VRSymbolKeyset : MonoBehaviour
+    public class SymbolKeyset : MonoBehaviour
     {
-        [SerializeField] private VRKeyboardButton delete;
-        [SerializeField] private VRKeyboardButton letters;
-        [SerializeField] private VRKeyboardButton enter;
+        [SerializeField] private KeyboardUtilityButton delete;
+        [SerializeField] private KeyboardUtilityButton letters;
+        [SerializeField] private KeyboardUtilityButton enter;
 
         private VRKeyboard _keyboard;
 
         private void Awake()
         {
             _keyboard = GetComponentInParent<VRKeyboard>();
-            var symbols = GetComponentsInChildren<VRKeyboardLetter>();
+            var symbols = GetComponentsInChildren<KeyboardLetterButton>();
 
             foreach (var symbol in symbols)
                 symbol.OnClick += _keyboard.Write;
@@ -26,7 +26,7 @@ namespace OmegaVRKeyboard
 
         private void OnDestroy()
         {
-            var symbols = GetComponentsInChildren<VRKeyboardLetter>();
+            var symbols = GetComponentsInChildren<KeyboardLetterButton>();
 
             foreach (var symbol in symbols)
                 symbol.OnClick -= _keyboard.Write;

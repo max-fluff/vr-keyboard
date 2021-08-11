@@ -1,12 +1,11 @@
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace OmegaVRKeyboard
 {
-    public class VRKeyboardLetter : MonoBehaviour
+    public class KeyboardLetterButton : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI label;
         [SerializeField] private Button button;
@@ -16,6 +15,11 @@ namespace OmegaVRKeyboard
         private void Awake()
         {
             button.onClick.AddListener(OnButtonClick);
+        }
+
+        public void SetLetter(string letter)
+        {
+            label.text = letter;
         }
 
         public void ToUpperCase()

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace OmegaVRKeyboard
 {
-    public class VRKeyboardButton : MonoBehaviour
+    public class KeyboardUtilityButton : MonoBehaviour
     {
         [SerializeField] private Button button;
 

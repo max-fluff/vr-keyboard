@@ -1,36 +1,37 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace OmegaVRKeyboard
 {
-    public class VRKeyboard : MonoBehaviour
+    public partial class VRKeyboard : MonoBehaviour
     {
-        [SerializeField] private VRLetterKeyset[] lettersKeysets;
-        [SerializeField] private VRSymbolKeyset symbolsKeyset;
+        [Header("Keyboard Runtime Properties")]
+        [SerializeField] private List<LetterKeyset> lettersKeysets;
+        [SerializeField] private SymbolKeyset symbolsKeyset;
         [SerializeField] private ReturnButtonModes returnMode;
 
         private TMP_InputField _inputField;
 
         private int _currentKeyset;
-        private static VRKeyboard instance;
+        private static VRKeyboard _instance;
 
         private enum ReturnButtonModes
         {
             NewLine,
             CloseKeyboard
         }
-        
+
         private void Awake()
         {
-            instance = this;
-            
+            _instance = this;
+
             foreach (var keyboard in lettersKeysets)
                 keyboard.gameObject.SetActive(false);
             symbolsKeyset.gameObject.SetActive(false);
         }
-        
+
         public void EnableSymbols()
         {
             lettersKeysets[_currentKeyset].gameObject.SetActive(false);
@@ -44,10 +45,10 @@ namespace OmegaVRKeyboard
 
         public void SwitchLanguage()
         {
-            var nextKeyset = (_currentKeyset + 1) % lettersKeysets.Length;
+            var nextKeyset = (_currentKeyset + 1) % lettersKeysets.Count;
             SelectLetterKeyset(nextKeyset);
         }
-        
+
         private void SelectLetterKeyset(int number)
         {
             lettersKeysets[_currentKeyset].gameObject.SetActive(false);
@@ -61,14 +62,14 @@ namespace OmegaVRKeyboard
             if (_inputField is null) return;
 
             _inputField.text += $"{text}";
-            if(_inputField.characterLimit>0)
-                _inputField.text = _inputField.text.Remove(_inputField.characterLimit); 
+            if (_inputField.characterLimit > 0)
+                _inputField.text = _inputField.text.Remove(_inputField.characterLimit);
         }
 
         public void Delete()
         {
             if (_inputField is null) return;
-            
+
             var text = _inputField.text;
             _inputField.text = text.Remove(text.Length - 1);
         }
@@ -91,40 +92,40 @@ namespace OmegaVRKeyboard
 
         public static void ShowKeyboard(TMP_InputField tmpInputField)
         {
-            if (instance is null)
+            if (_instance is null)
             {
                 Debug.LogError("Could not find keyboard instance on scene");
                 return;
             }
-            
-            if(tmpInputField == instance._inputField) return;
-            
+
+            if (tmpInputField == _instance._inputField) return;
+
             HideKeyboard();
-            instance.lettersKeysets[instance._currentKeyset].gameObject.SetActive(true);
-            instance._inputField = tmpInputField;
+            _instance.lettersKeysets[_instance._currentKeyset].gameObject.SetActive(true);
+            _instance._inputField = tmpInputField;
         }
 
         public static void HideKeyboard()
         {
-            if (instance is null)
+            if (_instance is null)
             {
                 Debug.LogError("Could not find keyboard instance on scene");
                 return;
             }
-            
-            if (!(instance._inputField is null))
-                instance._inputField.DeactivateInputField();
-            
-            foreach (var keyboard in instance.lettersKeysets)
+
+            if (!(_instance._inputField is null))
+                _instance._inputField.DeactivateInputField();
+
+            foreach (var keyboard in _instance.lettersKeysets)
                 keyboard.gameObject.SetActive(false);
-            instance.symbolsKeyset.gameObject.SetActive(false);
-            
-            instance._inputField = null;
+            _instance.symbolsKeyset.gameObject.SetActive(false);
+
+            _instance._inputField = null;
         }
 
         private void OnDestroy()
         {
-            instance = null;
+            _instance = null;
         }
     }
 }
