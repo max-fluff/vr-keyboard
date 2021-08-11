@@ -7,5 +7,4 @@ jobs:
   update-package:
     runs-on: ubuntu-latest
     steps:
-      - run: git subtree push --prefix Assets/VRKeyboard-package origin package
-      - run: echo Package has been updated
+      - run: git subtree push --prefix Assets/VRKeyboard-package origin upm
