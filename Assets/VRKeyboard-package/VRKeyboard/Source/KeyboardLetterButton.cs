@@ -26,7 +26,7 @@ namespace VRKeyboard
         {
             label.text = label.text.ToUpper();
         }
-        
+
         public void ToLowerCase()
         {
             label.text = label.text.ToLower();

@@ -7,8 +7,9 @@ namespace VRKeyboard
 {
     public partial class VRKeyboard : MonoBehaviour
     {
-        [Header("Keyboard Runtime Properties")]
-        [SerializeField] private List<LetterKeyset> lettersKeysets;
+        [Header("Keyboard Runtime Properties")] [SerializeField]
+        private List<LetterKeyset> lettersKeysets;
+
         [SerializeField] private SymbolKeyset symbolsKeyset;
         [SerializeField] private ReturnButtonModes returnMode;
 
@@ -71,7 +72,7 @@ namespace VRKeyboard
             if (_inputField is null) return;
 
             var text = _inputField.text;
-            if(text.Length > 0)
+            if (text.Length > 0)
                 _inputField.text = text.Remove(text.Length - 1);
         }
 

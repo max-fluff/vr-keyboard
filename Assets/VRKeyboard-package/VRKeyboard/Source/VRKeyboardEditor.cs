@@ -5,8 +5,9 @@ namespace VRKeyboard
 {
     public partial class VRKeyboard
     {
-        [Header("Keyboard Generating Properties")]
-        [SerializeField] private string[] lettersRows;
+        [Header("Keyboard Generating Properties")] [SerializeField]
+        private string[] lettersRows;
+
         [SerializeField] private KeyboardLetterButton letterPrefab;
         [SerializeField] private KeyboardUtilityButton shiftPrefab;
         [SerializeField] private KeyboardUtilityButton deletePrefab;
@@ -23,7 +24,7 @@ namespace VRKeyboard
             var keysetInstance = Instantiate(keysetPrefab, backgroundGameObject.transform);
 
             GenerateRows(keysetInstance);
-            
+
             lettersKeysets.Add(keysetInstance);
         }
 
