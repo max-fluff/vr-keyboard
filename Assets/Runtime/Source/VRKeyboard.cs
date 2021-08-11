@@ -61,7 +61,8 @@ namespace OmegaVRKeyboard
             if (_inputField is null) return;
 
             _inputField.text += $"{text}";
-            _inputField.text = _inputField.text.Remove(_inputField.characterLimit); 
+            if(_inputField.characterLimit>0)
+                _inputField.text = _inputField.text.Remove(_inputField.characterLimit); 
         }
 
         public void Delete()
