@@ -5,10 +5,10 @@
   "description": "Custom Keyboard",
   "unity": "2019.1",
   "unityRelease": "0b5",
-  "author": "Omega (https://github.com/ltd-profit/)",
+  "author": "Max Fluff (https://github.com/max-fluff/)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ltd-profit/toolbar-extender.git"
+    "url": "git+https://github.com/ltd-profit/vr-keyboard.git"
   },
   "hideInEditor": false
 }
