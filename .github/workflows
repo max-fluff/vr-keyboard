@@ -7,4 +7,5 @@ jobs:
   update-package:
     runs-on: ubuntu-latest
     steps:
+      - run:git-subtree installation is broken
       - run: echo Package has been updated
