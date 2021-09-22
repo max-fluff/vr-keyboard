@@ -24,6 +24,10 @@ namespace VRKeyboard
             CloseKeyboard
         }
 
+        public event Action<string> OnWrite; 
+        public event Action OnDelete; 
+        public event Action OnReturn; 
+
         private void Awake()
         {
             _instance = this;
@@ -60,8 +64,9 @@ namespace VRKeyboard
 
         public void Write(string text)
         {
+            OnWrite?.Invoke(text);
+            
             if (_inputField is null) return;
-
             _inputField.text += $"{text}";
             if (_inputField.characterLimit > 0)
                 _inputField.text = _inputField.text.Remove(_inputField.characterLimit);
@@ -69,8 +74,8 @@ namespace VRKeyboard
 
         public void Delete()
         {
+            OnDelete?.Invoke();
             if (_inputField is null) return;
-
             var text = _inputField.text;
             if (text.Length > 0)
                 _inputField.text = text.Remove(text.Length - 1);
@@ -78,6 +83,8 @@ namespace VRKeyboard
 
         public void Return()
         {
+            OnReturn?.Invoke();
+            
             switch (returnMode)
             {
                 case ReturnButtonModes.NewLine:
