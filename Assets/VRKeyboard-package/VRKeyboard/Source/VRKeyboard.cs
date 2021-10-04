@@ -16,7 +16,7 @@ namespace VRKeyboard
         private TMP_InputField _inputField;
 
         private int _currentKeyset;
-        private static VRKeyboard _instance;
+        public static VRKeyboard instance;
 
         private enum ReturnButtonModes
         {
@@ -30,7 +30,7 @@ namespace VRKeyboard
 
         private void Awake()
         {
-            _instance = this;
+            instance = this;
 
             foreach (var keyboard in lettersKeysets)
                 keyboard.gameObject.SetActive(false);
@@ -101,40 +101,40 @@ namespace VRKeyboard
 
         public static void ShowKeyboard(TMP_InputField tmpInputField)
         {
-            if (_instance is null)
+            if (instance is null)
             {
                 Debug.LogError("Could not find keyboard instance on scene");
                 return;
             }
 
-            if (tmpInputField == _instance._inputField) return;
+            if (tmpInputField == instance._inputField) return;
 
             HideKeyboard();
-            _instance.lettersKeysets[_instance._currentKeyset].gameObject.SetActive(true);
-            _instance._inputField = tmpInputField;
+            instance.lettersKeysets[instance._currentKeyset].gameObject.SetActive(true);
+            instance._inputField = tmpInputField;
         }
 
         public static void HideKeyboard()
         {
-            if (_instance is null)
+            if (instance is null)
             {
                 Debug.LogError("Could not find keyboard instance on scene");
                 return;
             }
 
-            if (!(_instance._inputField is null))
-                _instance._inputField.DeactivateInputField();
+            if (!(instance._inputField is null))
+                instance._inputField.DeactivateInputField();
 
-            foreach (var keyboard in _instance.lettersKeysets)
+            foreach (var keyboard in instance.lettersKeysets)
                 keyboard.gameObject.SetActive(false);
-            _instance.symbolsKeyset.gameObject.SetActive(false);
+            instance.symbolsKeyset.gameObject.SetActive(false);
 
-            _instance._inputField = null;
+            instance._inputField = null;
         }
 
         private void OnDestroy()
         {
-            _instance = null;
+            instance = null;
         }
     }
 }
