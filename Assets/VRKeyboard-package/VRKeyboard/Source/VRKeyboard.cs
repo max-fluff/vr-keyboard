@@ -113,6 +113,19 @@ namespace VRKeyboard
             instance.lettersKeysets[instance._currentKeyset].gameObject.SetActive(true);
             instance._inputField = tmpInputField;
         }
+        
+        public static void ShowKeyboard()
+        {
+            if (instance is null)
+            {
+                Debug.LogError("Could not find keyboard instance on scene");
+                return;
+            }
+
+            HideKeyboard();
+            instance.lettersKeysets[instance._currentKeyset].gameObject.SetActive(true);
+            instance._inputField = null;
+        }
 
         public static void HideKeyboard()
         {
