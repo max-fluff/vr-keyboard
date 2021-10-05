@@ -8,11 +8,11 @@ namespace VRKeyboard
         [SerializeField] private KeyboardUtilityButton letters;
         [SerializeField] private KeyboardUtilityButton enter;
 
-        private VRKeyboard _keyboard;
+        private Keyboard _keyboard;
 
         private void Awake()
         {
-            _keyboard = GetComponentInParent<VRKeyboard>();
+            _keyboard = GetComponentInParent<Keyboard>();
             var symbols = GetComponentsInChildren<KeyboardLetterButton>();
 
             foreach (var symbol in symbols)

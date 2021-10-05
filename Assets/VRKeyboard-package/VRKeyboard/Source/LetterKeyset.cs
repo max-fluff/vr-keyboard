@@ -10,13 +10,13 @@ namespace VRKeyboard
         [SerializeField] private KeyboardUtilityButton symbols;
         [SerializeField] private KeyboardUtilityButton enter;
 
-        private VRKeyboard _keyboard;
+        private Keyboard _keyboard;
         private KeyboardLetterButton[] _letters;
         private bool _isUpperCase;
 
         private void Awake()
         {
-            _keyboard = GetComponentInParent<VRKeyboard>();
+            _keyboard = GetComponentInParent<Keyboard>();
             _letters = GetComponentsInChildren<KeyboardLetterButton>();
 
             foreach (var letter in _letters)

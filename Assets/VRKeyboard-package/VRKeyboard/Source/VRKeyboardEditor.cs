@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace VRKeyboard
 {
-    public partial class VRKeyboard
+    public partial class Keyboard
     {
         [Header("Keyboard Generating Properties")] [SerializeField]
         private string[] lettersRows;
