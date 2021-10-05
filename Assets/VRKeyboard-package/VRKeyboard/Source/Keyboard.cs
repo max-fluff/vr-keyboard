@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace VRKeyboard
 {
-    public partial class VRKeyboard : MonoBehaviour
+    public partial class Keyboard : MonoBehaviour
     {
         [Header("Keyboard Runtime Properties")] [SerializeField]
         private List<LetterKeyset> lettersKeysets;
@@ -16,7 +16,7 @@ namespace VRKeyboard
         private TMP_InputField _inputField;
 
         private int _currentKeyset;
-        public static VRKeyboard instance;
+        public static Keyboard instance;
 
         private enum ReturnButtonModes
         {

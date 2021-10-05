@@ -11,7 +11,7 @@ namespace VRKeyboard
         private void Awake()
         {
             _inputField = GetComponent<TMP_InputField>();
-            _inputField.onSelect.AddListener(_ => VRKeyboard.ShowKeyboard(_inputField));
+            _inputField.onSelect.AddListener(_ => Keyboard.ShowKeyboard(_inputField));
         }
     }
 }
